@@ -1,5 +1,8 @@
 package Q_1;
 
+//Importando Biblioteca calendário
+import java.util.Calendar;
+
 //Classe Pai - Conta Bancária
 class ContaBancaria {
 	String cliente;
@@ -37,12 +40,12 @@ class ContaBancaria {
 
 //Classe Filha ContaBancaria>ContaPoupanca
 class ContaPoupanca extends ContaBancaria {
-	private int diaHoje = 10;
+	private Calendar diaHoje = Calendar.getInstance();
 	private int diaDeRendimento = 10;
 	private double tax = 5;
 	
 	void calcularNovoSaldo() {
-		if(this.diaHoje==this.diaDeRendimento)
+		if(this.diaHoje.get(Calendar.DAY_OF_MONTH)==this.diaDeRendimento)
 			this.saldo*=(1+this.tax/100);
 	}
 	
