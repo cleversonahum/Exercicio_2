@@ -4,7 +4,7 @@ package Q_1;
 class ContaBancaria {
 	String cliente;
 	int num_conta;
-	double saldo = 0;
+	float saldo = 0;
 	
 	void setCliente(String cliente) {
 		this.cliente = cliente;
@@ -17,7 +17,7 @@ class ContaBancaria {
 	
 	
 	void sacar(double saq) {
-		if(this.saldo>saq){
+		if(this.saldo>saq && saq>0){
 			this.saldo-=saq;
 		}
 		else {
@@ -26,7 +26,8 @@ class ContaBancaria {
 	}
 	
 	void depositar(double dep) {
-		this.saldo+= dep;
+		if(dep>0)
+			this.saldo+= dep;
 	}
 	
 	void mostraDados() {
@@ -56,7 +57,7 @@ class ContaCorrente extends ContaBancaria {
 	float limite = 1000;
 	@Override
 	void sacar(double saq) {
-		if((this.saldo-saq)>(-this.limite)) {
+		if((this.saldo-saq)>(-this.limite) && saq>0) {
 			this.saldo -= saq;
 		}
 		else {
