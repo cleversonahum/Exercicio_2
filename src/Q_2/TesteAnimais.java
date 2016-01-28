@@ -36,7 +36,7 @@ class Animal {
 
 
 class Peixe extends Animal {
-	String caracteristica;
+	private String caracteristica;
 	
 	void alteraCaracteristica(String carac) {
 		this.caracteristica = carac;

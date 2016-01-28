@@ -37,9 +37,9 @@ class ContaBancaria {
 
 //Classe Filha ContaBancaria>ContaPoupanca
 class ContaPoupanca extends ContaBancaria {
-	int diaHoje = 10;
-	int diaDeRendimento = 10;
-	double tax = 5;
+	private int diaHoje = 10;
+	private int diaDeRendimento = 10;
+	private double tax = 5;
 	
 	void calcularNovoSaldo() {
 		if(this.diaHoje==this.diaDeRendimento)
@@ -54,7 +54,7 @@ class ContaPoupanca extends ContaBancaria {
 
 //Classe Filha ContaBancaria>ContaCorrente
 class ContaCorrente extends ContaBancaria {
-	float limite = 1000;
+	private float limite = 1000;
 	@Override
 	void sacar(double saq) {
 		if((this.saldo-saq)>(-this.limite) && saq>0) {
