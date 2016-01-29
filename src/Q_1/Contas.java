@@ -5,21 +5,35 @@ import java.util.Calendar;
 
 //Classe Pai - Conta Bancária
 class ContaBancaria {
-	String cliente;
-	int num_conta;
-	float saldo = 0;
+	private String cliente;
+	private int num_conta;
+	private float saldo = 0;
+	
+	String getCliente() {
+		return this.cliente;
+	}
 	
 	void setCliente(String cliente) {
 		this.cliente = cliente;
+	}
+	
+	int getNumConta() {
+		return this.num_conta;
 	}
 	
 	void setNumConta(int num_conta) {
 		this.num_conta = num_conta;
 	}
 	
+	float getSaldo() {
+		return this.saldo;
+	}
 	
+	void alterarSaldo(float saldo) {
+		this.saldo = saldo;
+	}
 	
-	void sacar(double saq) {
+	void sacar(float saq) {
 		if(this.saldo>saq && saq>0){
 			this.saldo-=saq;
 		}
@@ -28,7 +42,7 @@ class ContaBancaria {
 		}
 	}
 	
-	void depositar(double dep) {
+	void depositar(float dep) {
 		if(dep>0)
 			this.saldo+= dep;
 	}
@@ -41,17 +55,22 @@ class ContaBancaria {
 //Classe Filha ContaBancaria>ContaPoupanca
 class ContaPoupanca extends ContaBancaria {
 	private Calendar diaHoje = Calendar.getInstance();
-	private int diaDeRendimento = 10;
-	private double tax = 5;
+	private int diaDeRendimento = 29;
+	private float tax = 5;
+	
+	//teste
+	int teste() {
+		return this.diaHoje.get(Calendar.DAY_OF_MONTH);
+	}
 	
 	void calcularNovoSaldo() {
 		if(this.diaHoje.get(Calendar.DAY_OF_MONTH)==this.diaDeRendimento)
-			this.saldo*=(1+this.tax/100);
+			super.alterarSaldo(super.getSaldo()*(1+this.tax/100));
 	}
 	
 	@Override
 	void mostraDados() {
-		System.out.println("Cliente : "+this.cliente+"\nNumero da Conta : "+this.num_conta+"\nSaldo : "+this.saldo+"\nTaxa de Rendimento/mês : "+this.tax+"%\n");
+		System.out.println("Cliente : "+super.getCliente()+"\nNumero da Conta : "+super.getNumConta()+"\nSaldo : "+super.getSaldo()+"\nTaxa de Rendimento/mês : "+this.tax+"%\n");
 	}
 }
 
@@ -59,9 +78,9 @@ class ContaPoupanca extends ContaBancaria {
 class ContaCorrente extends ContaBancaria {
 	private float limite = 1000;
 	@Override
-	void sacar(double saq) {
-		if((this.saldo-saq)>(-this.limite) && saq>0) {
-			this.saldo -= saq;
+	void sacar(float saq) {
+		if((super.getSaldo()-saq)>(-this.limite) && saq>0) {
+			super.alterarSaldo(super.getSaldo()-saq);
 		}
 		else {
 			System.out.println("Seu saque excedeu o limite permitido");
@@ -81,23 +100,24 @@ public class Contas {
 		//Conta Bancária
 		minhaConta.setCliente("Cleverson Conta Bancaria");
 		minhaConta.setNumConta(1234567);
-		minhaConta.depositar(1000);
-		minhaConta.sacar(1200);
+		minhaConta.depositar(1000f);
+		minhaConta.sacar(1200f);
 		minhaConta.mostraDados();
 		
 		//Conta Poupança
 		minhaContaPoupanca.setCliente("Cleverson Conta poupança");
 		minhaContaPoupanca.setNumConta(7654321);
-		minhaContaPoupanca.depositar(1000);
+		minhaContaPoupanca.depositar(1000f);
 		minhaContaPoupanca.calcularNovoSaldo();
-		minhaContaPoupanca.sacar(500);
+		minhaContaPoupanca.sacar(500f);
 		minhaContaPoupanca.mostraDados();
+		System.out.println("Dia de Hoje : "+minhaContaPoupanca.teste());
 		
 		//Conta Corrente
 		minhaContaCorrente.setCliente("Cleverson Conta Corrente");
 		minhaContaCorrente.setNumConta(1243567);
-		minhaContaCorrente.depositar(1000);
-		minhaContaCorrente.sacar(2500);
+		minhaContaCorrente.depositar(1000f);
+		minhaContaCorrente.sacar(1999f);
 		minhaContaCorrente.mostraDados();
 		
 	}

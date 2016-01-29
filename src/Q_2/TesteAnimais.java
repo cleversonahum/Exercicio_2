@@ -1,31 +1,66 @@
 package Q_2;
 
+//Classe Animal
 class Animal {
-	String nome,cor,ambiente;
-	double velocidade;
-	int patas,comprimento;
+	private String nome,cor,ambiente;
+	private float velocidade;
+	private int patas,comprimento;
+	
+	Animal(String nome, String cor, String ambiente, float velocidade, int patas, int comprimento) {
+		this.nome = nome;
+		this.cor = cor;
+		this.ambiente = ambiente;
+		this.velocidade = velocidade;
+		this.patas = patas;
+		this.comprimento = comprimento;
+	}
+	
+	String getNome() {
+		return this.nome;
+	}
 	
 	void alteraNome(String nome) {
 		this.nome = nome;
+	}
+	
+	int getComprimento() {
+		return this.comprimento;
 	}
 	
 	void alteraComprimento(int comp) {
 		this.comprimento = comp;
 	}
 	
+	int getPatas() {
+		return this.patas;
+	}
+	
 	void alteraPatas(int patas) {
 		this.patas = patas;
+	}
+	
+	
+	String getCor() {
+		return this.cor;
 	}
 	
 	void alteraCor(String cor) {
 		this.cor = cor;
 	}
 	
+	String getAmbiente() {
+		return this.ambiente;
+	}
+	
 	void alteraAmbiente(String ambiente) {
 		this.ambiente = ambiente;
 	}
 	
-	void alteraVelocidade(double velocidade) {
+	float getVelocidade() {
+		return this.velocidade;
+	}
+	
+	void alteraVelocidade(float velocidade) {
 		this.velocidade = velocidade;
 	}
 	
@@ -38,6 +73,13 @@ class Animal {
 class Peixe extends Animal {
 	private String caracteristica;
 	
+	Peixe(String nome, String cor, String ambiente, String caracteristica, float velocidade, int patas, int comprimento) {
+		super(nome, cor, ambiente, velocidade, patas, comprimento);
+		this.caracteristica = caracteristica;
+	}
+	
+	
+	
 	void alteraCaracteristica(String carac) {
 		this.caracteristica = carac;
 	}
@@ -48,13 +90,18 @@ class Peixe extends Animal {
 	
 	@Override
 	void dados() {
-		System.out.print("Nome : "+this.nome+"\nComprimento : "+this.comprimento+" cm\nPatas : "+this.patas+"\nCor : "+this.cor+"\nAmbiente : "+this.ambiente+"\nVelocidade : "+this.velocidade+" m/s\nCaracterística : "+this.caracteristica()+"\n");
+		System.out.print("Nome : "+super.getNome()+"\nComprimento : "+super.getComprimento()+" cm\nPatas : "+super.getPatas()+"\nCor : "+super.getCor()+"\nAmbiente : "+super.getAmbiente()+"\nVelocidade : "+super.getVelocidade()+" m/s\nCaracterística : "+this.caracteristica()+"\n");
 	}
 }
 
 
 class Mamifero extends Animal {
-	String alimento;
+	private String alimento;
+	
+	Mamifero(String nome, String cor, String ambiente, String alimento, float velocidade, int patas, int comprimento) {
+		super(nome, cor, ambiente, velocidade, patas, comprimento);
+		this.alimento = alimento;
+	}
 	
 	void alteraAlimento(String alimento) {
 		this.alimento = alimento;
@@ -66,7 +113,7 @@ class Mamifero extends Animal {
 	
 	@Override
 	void dados() {
-		System.out.print("Nome : "+this.nome+"\nComprimento : "+this.comprimento+" cm\nPatas : "+this.patas+"\nCor : "+this.cor+"\nAmbiente : "+this.ambiente+"\nVelocidade : "+this.velocidade+" m/s\nAlimento : "+this.alimento()+"\n");
+		System.out.print("Nome : "+super.getNome()+"\nComprimento : "+super.getComprimento()+" cm\nPatas : "+super.getPatas()+"\nCor : "+super.getCor()+"\nAmbiente : "+super.getAmbiente()+"\nVelocidade : "+super.getVelocidade()+" m/s\nAlimento : "+this.alimento()+"\n");
 	}
 }
 
@@ -74,37 +121,10 @@ class Mamifero extends Animal {
 public class TesteAnimais {
 
 	public static void main(String[] args) {
-		Animal camelo = new Animal();
-		Peixe tubarao = new Peixe();
-		Mamifero urso_do_canada = new Mamifero();
+		Animal camelo = new Animal("Camelo","Amarelo","Terra",2,4,150);
+		Peixe tubarao = new Peixe("Tubarão","Cinza","Mar","Barbatanas e cauda",1.5f,0,300);
+		Mamifero urso_do_canada = new Mamifero("Urso do Canadá","Vermelho","Terra","Mel",0.5f,4,180);
 		
-		//Camelo
-		camelo.alteraNome("Camelo");
-		camelo.alteraComprimento(150);
-		camelo.alteraPatas(4);
-		camelo.alteraCor("Amarelo");
-		camelo.alteraAmbiente("Terra");
-		camelo.alteraVelocidade(2);
-		
-		
-		//Tubarão
-		tubarao.alteraNome("Tubarão");
-		tubarao.alteraComprimento(300);
-		tubarao.alteraPatas(0);
-		tubarao.alteraCor("Cinza");
-		tubarao.alteraAmbiente("Mar");
-		tubarao.alteraVelocidade(1.5);
-		tubarao.alteraCaracteristica("Barbatanas e cauda");
-		
-		
-		//Urso do Canadá
-		urso_do_canada.alteraNome("Urso do Canadá");
-		urso_do_canada.alteraComprimento(180);
-		urso_do_canada.alteraPatas(4);
-		urso_do_canada.alteraCor("Vermelho");
-		urso_do_canada.alteraAmbiente("Terra");
-		urso_do_canada.alteraVelocidade(0.5);
-		urso_do_canada.alteraAlimento("Mel");
 		
 		//Resultado
 		System.out.println("Zoo: \n---------------------------------");

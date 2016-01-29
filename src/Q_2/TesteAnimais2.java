@@ -1,14 +1,20 @@
 package Q_2;
-//import javax.swing.JOptionPane;
+import java.util.Scanner;
 
 public class TesteAnimais2 {
 
 	public static void main(String[] args) {
-		Animal animais[] = new Animal[2];
-		//Peixe[] tubarao = new Peixe();
-		//Mamifero[] urso_do_canada = new Mamifero();
-		animais[0].alteraNome("Cleverson");
-		animais[1].alteraNome("outro cleverson");
+		//Variável de entrada teclado
+		Scanner entrada = new Scanner(System.in);
+		
+		//Declarando os Arrays de referência
+		Animal animais[] = new Animal[10];
+		Mamifero mamiferos[] = new Mamifero[10];
+		Peixe peixes[] = new Peixe[10];
+		
+		
+		
+		
 
 	}
 
