@@ -55,8 +55,8 @@ class ContaBancaria {
 //Classe Filha ContaBancaria>ContaPoupanca
 class ContaPoupanca extends ContaBancaria {
 	private Calendar diaHoje = Calendar.getInstance();
-	private int diaDeRendimento = 10;
-	private float tax = 5;
+	private final int diaDeRendimento = 10;
+	private final float tax = 5;
 	
 	//teste
 	int teste() {
@@ -76,7 +76,7 @@ class ContaPoupanca extends ContaBancaria {
 
 //Classe Filha ContaBancaria>ContaCorrente
 class ContaCorrente extends ContaBancaria {
-	private float limite = 1000;
+	private final float limite = 1000;
 	@Override
 	void sacar(float saq) {
 		if((super.getSaldo()-saq)>(-this.limite) && saq>0) {
