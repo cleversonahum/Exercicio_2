@@ -121,7 +121,7 @@ class Mamifero extends Animal {
 public class TesteAnimais {
 
 	public static void main(String[] args) {
-		Animal camelo = new Animal("Camelo","Amarelo","Terra",2,4,150);
+		Mamifero camelo = new Mamifero("Camelo","Amarelo","Terra","Água",2,4,150);
 		Peixe tubarao = new Peixe("Tubarão","Cinza","Mar","Barbatanas e cauda",1.5f,0,300);
 		Mamifero urso_do_canada = new Mamifero("Urso do Canadá","Vermelho","Terra","Mel",0.5f,4,180);
 		
