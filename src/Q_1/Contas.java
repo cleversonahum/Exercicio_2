@@ -55,7 +55,7 @@ class ContaBancaria {
 //Classe Filha ContaBancaria>ContaPoupanca
 class ContaPoupanca extends ContaBancaria {
 	private Calendar diaHoje = Calendar.getInstance();
-	private int diaDeRendimento = 29;
+	private int diaDeRendimento = 10;
 	private float tax = 5;
 	
 	//teste
